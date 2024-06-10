@@ -11,7 +11,7 @@
 10.   ``` chmod +x /usr/local/bin/login.sh ```
 11.   Укажем в файле /etc/pam.d/sshd модуль pam_exec и наш скрипт:
 12. ``` vim /etc/pam.d/sshd ```
-13.  ```  auth       substack     password-auth
+13.  ```  "auth       substack     password-auth
 auth       include      postlogin
 auth required pam_exec.so debug /usr/local/bin/login.sh
 account    required     dad
@@ -27,7 +27,7 @@ session    required     pam_namespace.so
 session    optional     pam_keyinit.so force revoke
 session    optional     pam_motd.so
 session    include      password-auth
-session    include      postlogin
+session    include      postlogin"
 ```
 13. я добавил все это из методички. не знаю правильно это или нет.
 14. проверяем: ставим на ОС дату - выходной день и пытаемся логиниться пользователем otus, и у нас ничего не получается.
