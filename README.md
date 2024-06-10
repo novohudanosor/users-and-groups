@@ -29,6 +29,7 @@ session    optional     pam_keyinit.so force revoke
 session    optional     pam_motd.so
 session    include      password-auth
 session    include      postlogin ```
+
 14. я добавил все это из методички. не знаю правильно это или нет.
 15. проверяем: ставим на ОС дату - выходной день и пытаемся логиниться пользователем otus, и у нас ничего не получается.
 16. ![alt text](./Pictures/3.png)
