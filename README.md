@@ -11,28 +11,12 @@
 10.   ``` chmod +x /usr/local/bin/login.sh ```
 11.   Укажем в файле /etc/pam.d/sshd модуль pam_exec и наш скрипт:
 12. ``` vim /etc/pam.d/sshd ```
-13.
-``` auth       substack     password-auth
-auth       include      postlogin
-auth required pam_exec.so debug /usr/local/bin/login.sh
-account    required     dad
-account    required     pam_nologin.so
-account    include      password-auth
-password   include      password-auth
-# pam_selinux.so close should be the first session rule
-session    required     pam_selinux.so close
-session    required     pam_loginuid.so
-# pam_selinux.so open should only be followed by sessions to be executed in the user context
-session    required     pam_selinux.so open env_params
-session    required     pam_namespace.so
-session    optional     pam_keyinit.so force revoke
-session    optional     pam_motd.so
-session    include      password-auth
-session    include      postlogin```.
-
-14. я добавил все это из методички. не знаю правильно это или нет.
-15. проверяем: ставим на ОС дату - выходной день и пытаемся логиниться пользователем otus, и у нас ничего не получается.
+13. добавил из методички
+14.  ![alt text](./Pictures/4.png)
+15. проверяем: ставим на ОС дату - выходной день (сегодня выходной) и пытаемся логиниться пользователем otus, и у нас ничего не получается.
 16. ![alt text](./Pictures/3.png)
+
+
 
 
 
